@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+    cout << "Enter a number upto which the sum of odd nmubers will be calculated: ";
+    cin >> num;
+    int sum = 0;
+
+    for (int i = 1; i <= num; i++)
+    {
+        if (i % 2 != 0)
+        {
+            sum = sum + i;
+        }
+    }
+    cout << "The sum of odd numbers upto " << num << " is: " << sum << endl;
+    return 0;
+}
