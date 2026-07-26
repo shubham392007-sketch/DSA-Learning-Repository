@@ -1,4 +1,4 @@
-// Printing Sub Arrays
+// Maximum Sub array sum using brute force method
 #include <iostream>
 using namespace std;
 
@@ -22,19 +22,19 @@ int main()
     }
     cout << endl;
 
-    cout << "Your Sub arrays are: " << endl;
+    int maximum_sum = INT8_MIN;
     for (int start = 0; start < n; start++)
     {
+        int current_sum = 0;
+
         for (int end = start; end < n; end++)
         {
-            for (int i = start; i <= end; i++)
-            {
-                cout << array[i] << " ";
-            }
-            cout << " ";
+            current_sum += array[end];
+            maximum_sum = max(current_sum, maximum_sum);
         }
-        cout << endl;
     }
+
+    cout << "The maximum sum of sub array is: " << maximum_sum;
 
     return 0;
 }
