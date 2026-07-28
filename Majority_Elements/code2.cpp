@@ -1,4 +1,4 @@
-// Pair sum(sorted array) - brute force approach
+// Pair sum(sorted array) - two pointer approach - optimal method
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -26,15 +26,26 @@ int main()
     cout << "Enter your target value which must be the sum of the pairs present in array: ";
     cin >> target;
 
-    for (int i = 0; i < n; i++)
+    int i = 0;
+    int j = n - 1;
+    while (i < j)
     {
-        for (int j = i + 1; j < n; j++)
+        int pair_sum = array[i] + array[j];
+
+        if (pair_sum > target)
         {
-            if (array[i] + array[j] == target)
-            {
-                vec_1.push_back(array[i]);
-                vec_1.push_back(array[j]);
-            }
+            j--; // sum too big, decrease right pointer
+        }
+        else if (pair_sum < target)
+        {
+            i++; // sum too small, increase left pointer
+        }
+        else
+        {
+            vec_1.push_back(array[i]);
+            vec_1.push_back(array[j]);
+            i++;
+            j--; // move both after finding a pair
         }
     }
 
